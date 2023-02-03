@@ -17,7 +17,7 @@ const App = () => {
   const searchMovies = async (title) => {
     const response = await fetch(`${API_URL}&s=${title}`);
     const data = await response.json();
-    console.log(data.Search);
+    // console.log(data.Search);
     setMovies(data.Search);
   };
 
@@ -26,6 +26,12 @@ const App = () => {
     setSuggestions([]);
   };
 
+  const onKeyDown = (event) => {
+    if (event.key === "Enter") {
+      setSearchTerm(event.target.value);
+      console.log("User pressed:", event.key);
+    }
+  };
   // const onChangeHandler = (searchTerm) => {
   //   let matches = [];
   //   console.log(searchTerm);
@@ -48,6 +54,7 @@ const App = () => {
         <input
           type="text"
           value={searchTerm}
+          onKeyDown={(event) => onKeyDown(event)}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search for movies"
           onBlur={() => {
@@ -58,7 +65,7 @@ const App = () => {
         />
         {suggestions &&
           suggestions.map((suggestion, i) => (
-            <div key={i} onClick={() => onSuggestHandler(suggestions.Title)}>
+            <div key={i} onClick={() => onSuggestHandler(suggestion.Title)}>
               {" "}
               {suggestions.Title}
             </div>
