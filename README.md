@@ -29,14 +29,5 @@ yarn start
 - Commit your changes
 - Push your changes to your fork
 
-***If you want to collaborate:***
-- Create a pull request
-- Wait for your changes to be merged
-- Update your fork
-- Update your local repository
-- Update your branch
-- Update your pull request
-- Update your changes
-
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
